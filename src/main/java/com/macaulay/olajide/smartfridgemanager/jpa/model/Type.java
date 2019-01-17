@@ -2,6 +2,7 @@ package com.macaulay.olajide.smartfridgemanager.jpa.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,5 +25,6 @@ public class Type {
 
     private Double totalFillFactor;
 
+    @Default
     private Boolean isForgotten = false;
 }
