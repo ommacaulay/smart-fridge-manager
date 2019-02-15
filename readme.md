@@ -17,6 +17,7 @@ It is designed to accept event and query calls from a smart fridge.
 2) `./gradlew clean build` will run Integration tests and build.
 3) `./gradlew bootRun` will run the application.
 You can visualize data by going to the in memory H2 DB Console at http://localhost:8080/h2-console/ and connect with default credentials
+4) Alternatively if you have Docker installed, `./gradlew jibDockerBuild` to build a Docker image and `docker container run -d --name smart-fridge-manager -p 8080:8080 <image name: version>`
 
 REST APIs trigger service calls.
 * handleItemAdd - POST http://localhost:8080/event/v1/item-added
