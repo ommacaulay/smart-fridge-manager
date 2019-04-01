@@ -1,6 +1,6 @@
 **About MicroService**
 
-_smart-fridge-manager_ is a java springboot micro-service with an in memory H2 database running on an embedded tomcat.
+**_smart-fridge-manager_** is a java springboot micro-service with an in memory H2 database running on an embedded tomcat.
 It is sole purpose to accept event and query calls from a smart fridge.
 
 **Assumptions in design**
