@@ -28,14 +28,10 @@ public class QueryControllerTest extends AbstractControllerTest {
         //We should only get 2 items (Soda and Dairy) that have 0 < fillFactor <= 0.1
         Assert.assertEquals(2,items.length);
 
-        // get non empty fill factor
+        // get fill factor
         ResponseEntity getFishFillFactorResponse = getTypeFillFactor(FISH_TYPE_ID);
         Assert.assertTrue(getFishFillFactorResponse.getStatusCode().is2xxSuccessful());
         Assert.assertEquals(0.2, (Double)getFishFillFactorResponse.getBody(), 0.0);
-
-        // get empty fill factor
-        ResponseEntity getMeatFillFactorResponse = getTypeFillFactor(MEAT_TYPE_ID);
-        Assert.assertTrue(getMeatFillFactorResponse.getStatusCode().is4xxClientError()); //Should not consider empty containers
 
         //forget Dairy container
         forgetType(DAIRY_TYPE_ID);

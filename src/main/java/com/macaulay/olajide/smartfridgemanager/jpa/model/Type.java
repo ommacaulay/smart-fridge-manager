@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
 
 @Entity
 @Data
@@ -23,7 +24,9 @@ public class Type {
 
     private String name;
 
-    private Double totalFillFactor;
+    @Default
+    @Max(1)
+    private Double totalFillFactor = 0.0;
 
     @Default
     private Boolean isForgotten = false;

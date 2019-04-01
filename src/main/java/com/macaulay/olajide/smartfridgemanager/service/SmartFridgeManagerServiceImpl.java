@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -68,7 +69,8 @@ public class SmartFridgeManagerServiceImpl implements SmartFridgeManagerService 
     @Override
     public Object[] getItems(Double fillFactor) {
 
-        log.info("Fetching items below {} FillFactor");
+        fillFactor = Objects.isNull(fillFactor) ? 1.0 : fillFactor;
+        log.info("Fetching items below {} FillFactor", fillFactor);
         List<Item> items = itemRepository.findNotForgottenItemsLessOrEqualToFillFactor(fillFactor);
         return items.toArray();
     }
@@ -77,14 +79,11 @@ public class SmartFridgeManagerServiceImpl implements SmartFridgeManagerService 
     public Double getFillFactor(long itemType) {
 
         log.info("Getting Fill Factor for item {}", itemType);
-        Double totalFillFactor = typeRepository.getOne(itemType).getTotalFillFactor();
-
-        // If fillFactor is 0.0, means container is empty
-        return  totalFillFactor == 0.0 ? null : totalFillFactor;
+        return typeRepository.getOne(itemType).getTotalFillFactor();
     }
 
     @Override
-    public void forgetItem(long itemType) {
+    public void forgetType(long itemType) {
 
         Type type = typeRepository.getOne(itemType);
         type.setIsForgotten(true);
