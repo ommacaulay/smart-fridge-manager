@@ -14,13 +14,6 @@ It is sole purpose to accept event and query calls from a smart fridge.
     - Soda
     - Vegetables
 
-**Instructions to Run.**
-1) Navigate to project folder. 
-2) `./gradlew clean build` will run Integration tests and build.
-3) `./gradlew bootRun` will run the application.
-You can visualize data by going to the in memory H2 DB Console at http://localhost:8080/h2-console/ and connect with default credentials
-4) Alternatively if you have Docker installed, `./gradlew jibDockerBuild` to build a Docker image and `docker container run -d --name smart-fridge-manager -p 8080:8080 <image name: version>`
-
 **Available APIs**
 * POST http://localhost:8080/event/v1/item-added
 ```
@@ -43,3 +36,11 @@ Request Body:
 * GET http://localhost:8080/query/v1/types/{id}/fill-factor
 
 * PUT http://localhost:8080/query/v1/types/{id}/forget
+
+**Instructions to Run.**
+1) Navigate to project folder. 
+2) `./gradlew clean build` will run Integration tests and build.
+3) `./gradlew bootRun` will run the application.
+You can visualize data by going to the in memory H2 DB Console at http://localhost:8080/h2-console/ and connect with default credentials
+4) Alternatively if you have Docker installed, `./gradlew jibDockerBuild` to build a Docker image and `docker container run -d --name smart-fridge-manager -p 8080:8080 <image name: version>`
+
