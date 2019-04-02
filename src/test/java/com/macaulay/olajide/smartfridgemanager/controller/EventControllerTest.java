@@ -17,7 +17,7 @@ public class EventControllerTest extends AbstractControllerTest{
         UUID uuid = UUID.randomUUID();
         // create item
         Type type = Type.builder()
-                .id(1L)
+                .id(VEGETABLE_TYPE_ID)
                 .build();
 
         Item item = Item.builder()

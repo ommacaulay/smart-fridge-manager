@@ -41,31 +41,27 @@ public interface SmartFridgeManagerService {
      *
      * i.e.
      *      getItems( 0.5 ) - will return any items that are 50% or less full, including
-     *                        items that are depleted. Unless all available containers are
-     *                        empty, this method should only consider the non-empty containers
-     *                        when calculating the overall fillFactor for a given item.
+     *                        items that are depleted.
      *
-     * @return an array of arrays containing [ itemType, fillFactor ]
+     * @return an array of arrays containing [itemType]
      */
     Object[] getItems( Double fillFactor );
 
     /**
-     * Returns the fill factor for a given item type to be displayed to the owner. Unless all available containers are
-     * empty, this method should only consider the non-empty containers
-     * when calculating the overall fillFactor for a given item.
+     * Returns the fill factor for a given item type to be displayed to the owner.
      *
      * @param itemType
      *
-     * @return a double representing the average fill factor for the item type
+     * @return a double representing the fill factor for the type
      */
     Double getFillFactor( long itemType );
 
     /**
-     * Stop tracking a given item. This method is used by the fridge to signal that its
-     * owner will no longer stock this item and thus should not be returned from #getItems()
+     * Stop tracking a given type. This method is used by the fridge to signal that its
+     * owner will no longer stock this type and thus should not be returned from #getItems()
      *
      * @param itemType
      */
-    void forgetItem( long itemType );
+    void forgetType(long itemType );
 
 }

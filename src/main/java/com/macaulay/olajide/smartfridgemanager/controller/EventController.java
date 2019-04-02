@@ -22,6 +22,11 @@ public class EventController {
     }
 
 
+    /**
+     * Called when user adds an item
+     * @param item
+     * @return
+     */
     @PostMapping("/item-added")
     public ResponseEntity<Object> itemAddedEvent(@RequestBody Item item) {
         smartFridgeManagerService.handleItemAdded(item.getType().getId(),
@@ -30,6 +35,11 @@ public class EventController {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * Called when user removes an item
+     * @param id
+     * @return
+     */
     @DeleteMapping("/item-removed/{id}")
     public ResponseEntity<Object> itemRemovedEvent(@PathVariable String id) {
         smartFridgeManagerService.handleItemRemoved(id);
